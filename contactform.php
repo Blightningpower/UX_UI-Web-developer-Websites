@@ -3,42 +3,44 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
-    $yourName = $_POST['yourName'];
-    $country = $_POST['country'];
-    $name1 = $_POST['name1'];
-    $name2 = $_POST['name2'];
-    $name3 = $_POST['name3'];
     $eMail = $_POST['eMail'];
+    $yourName = $_POST['yourName'];
+    $yourAge = $_POST['yourAge'];
+    $positive1 = $_POST['positive1'];
+    $positive2 = $_POST['positive2'];
+    $negative1 = $_POST['negative1'];
+    $negative2 = $_POST['negative2'];
 
-    // Email configuration
-    $mailTo = "Bavli2002@hotmail.com";
-    $subject = "Crush Form Submission"; // Set your email subject here
-    $headers = "From: " . $eMail; // You can set the sender's email here
+    // Database connection parameters
+    $servername = "localhost";
+    $username = "your_username";
+    $password = "your_password";
+    $dbname = "your_database_name";
 
-    // Email content
-    $txt =
-        "User: " . $yourName . "\n\n" .
-        "Country: " . $country . "\n\n" .
-        "Crush 1: " . $name1 . "\n" .
-        "Crush 2: " . $name2 . "\n" .
-        "Crush 3: " . $name3 . "\n\n" .
-        "E-mail: " . $eMail . "\n\n";
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // CSS for bold styling
-    $css = "font-weight: bold;";
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-    // Send email
-    $headers .= "Content-type: text/plain; charset=UTF-8\r\n"; // Set content type to plain text
-    $headers .= "Content-Transfer-Encoding: 8bit\r\n"; // Set content transfer encoding
-    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n"; // Set X-Mailer
+    // Prepare SQL statement to insert data into database
+    $sql = "INSERT INTO survey_responses (email, name, age, positive1, positive2, negative1, negative2) VALUES ('$eMail', '$yourName', '$yourAge', '$positive1', '$positive2', '$negative1', '$negative2')";
 
-    // Send email
-    mail($mailTo, $subject, $txt, $headers);
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    // Close database connection
+    $conn->close();
 
     $_SESSION['form_submitted'] = true;
 
     // Redirect to another page
-    header("Location: html/sike.html");
+    header("Location: html/thanks.html");
     exit();
 }
 ?>

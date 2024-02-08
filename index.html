@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="nl" xmlns="http://www.w3.org/1999/html">
+<html lang="nl">
 
 <head>
 
-    <meta charset="UTF-8">
-    <title>Een-Beetje-Verliefd.nl</title>
+    <title>Website Ervaring Enquête</title>
 
     <!-- Links for Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon_io/apple-touch-icon.png">
@@ -19,84 +18,95 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- Scriptfiles -->
+    <script src="script.js"></script>
+
 </head>
 
 <body>
-    <div class="flexContainer">
-        
-            <h1>Enter the names of your number 3 crushes and find out who your match is</h1>
+    <main>
+
+        <h1>Website Ervaring Enquête</h1>
+        <h4>Hoi, het doel van deze enquête is achter halen wat jij wel of niet fijn vindt aan websites.</h4>
+        <br>
+        <h4>Hieronder staan 8 websites met een verschillende stijl in de gebruikersomgeving. Scrol door elke website
+            heen en probeer minimaal 2 positieve en 2 negatieve punten te noteren die je hebt opgemerkt. Je hoeft ze
+            niet intensief te analyseren, maar probeer gewoon door de websites heen te gaan en noteer wat je opvalt. Het
+            zou niet langer dan 10 minuten van je tijd moeten nemen.
+        </h4>
+        <br>
+        <h4>Alvast bedankt voor het invullen van de enquête! Ik waardeer het heel erg. 😁
+            <br><br>
+            -Bavli
+        </h4>
 
 
 
-            <form action="contactform.php" method="POST">
+        <form action="contactform.php" method="POST">
+
+            <section id="generalSection">
+                <h2>Algemeen</h2>
 
                 <div class="row">
-                    <label for="yourName">Your Full Name:</label>
-                    <input type="text" class="inputWidth" id="yourName" name="yourName" placeholder="Your Full Name" required>
+                    <label for="yourName">Naam:</label>
+                    <input class="inputWidth" id="yourName" name="yourName" placeholder="Vul hier je naam in" required>
                 </div>
 
                 <div class="row">
-                    <label for="country">Country:</label>
-                    <div>
-                        <select id="country" name="country" onchange="handleCountryChange(this)">
-                            <option value="Netherlands">Netherlands</option>
-                            <option value="Belgium">Belgium</option>
-                            <option value="Germany">Germany</option>
-                            <option value="America">USA</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
+                    <label for="yourAge">Leeftijd:</label>
+                    <input class="inputWidth" id="yourAge" name="yourAge" placeholder="Vul hier je leeftijd in"
+                        required>
+                </div>
+            </section>
 
-                    <!-- Input field for other country -->
-                    <input type="text" class="inputWidth" id="otherCountry" name="otherCountry" style="display: none;"
-                        placeholder="Enter your country">
+            <section id="f1Website">
+                <h2>hellomonday.com</h2>
 
-                    <div class="row">
-                        <label for="name1">Crush 1:</label>
-                        <input type="text" class="inputWidth" id="name1" name="name1" placeholder="Crush 1">
-                    </div>
+                <img src="img/hellomonday.com.png" alt="hellomonday.com.png">
+
+                <h3>Klik op <a href="https://www.hellomonday.com/">deze link</a> en open de website.</h3>
+                <h3>Scrol rustig door de website heen en noteer hieronder minimaal 2 positieve en 2 negatieve punten die
+                    je opvielen aan de site.</h3>
 
                     <div class="row">
-                        <label for="name2">Crush 2:</label>
-                        <input type="text" class="inputWidth" id="name2" name="name2" placeholder="Crush 2">
+                        <label for="positive1">Positief punt:</label>
+                        <textarea class="inputWidth" id="positive1" name="Positief punt" placeholder="Positief punt"
+                            rows="4" cols="50" title="Noteer een positief punt" required></textarea>
                     </div>
 
                     <div class="row">
-                        <label for="name3">Crush 3:</label>
-                        <input type="text" class="inputWidth" id="name3" name="name3" placeholder="Crush 3">
+                        <label for="positive2">Positief punt:</label>
+                        <textarea class="inputWidth" id="positive2" name="Positief punt" placeholder="Positief punt"
+                            rows="4" cols="50" title="Noteer een positief punt" required></textarea>
                     </div>
 
                     <div class="row">
-                        <label for="eMail">Je E-mail:</label>
-                        <input type="text" class="inputWidth" id="eMail" name="eMail"
-                            placeholder="Vul hier je email in">
+                        <label for="negative1">Negatief punt:</label>
+                        <textarea class="inputWidth" id="negative1" name="Negatief punt" placeholder="Negatief punt"
+                            rows="4" cols="50" title="Noteer een negatief punt" required></textarea>
                     </div>
 
-                    <input src="img/red_Heart.png" id="submitButton" type="submit" title="Bereken Resultaat"
-                        onmouseover="changeImage('pink_Heart.png')" onmouseout="changeImage('red_Heart.png')"
-                        onclick="changeImage('pink_Heart_Small.png')">
-            </form>
-    
-    </div>
+                    <div class="row">
+                        <label for="negative2">Negatief punt:</label>
+                        <textarea class="inputWidth" id="negative3" name="Negatief punt" placeholder="Negatief punt"
+                            rows="4" cols="50" title="Noteer een negatief punt" required></textarea>
+                    </div>
 
-    <script>
+                    <div id="additionalPoints">
+                        <!-- Additional points will be added here -->
+                    </div>
 
-        document.getElementById("submitButton").type = "image";
+                    <button type="button" onclick="addRow('positive')">Voeg positief punt toe</button>
+                    <button type="button" onclick="addRow('negative')">Voeg negatief punt toe</button>
 
-        function changeImage(newSrc) {
-            document.getElementById('submitButton').src = "img/" + newSrc;
+            </section>
 
-            function handleCountryChange(select) {
-                const otherCountryInput = document.getElementById("otherCountry");
+            <input id="submitButton" type="submit" title="Verstuur enquête" value="Verstuur enquête">
 
-                if (select.value === "Other") {
-                    otherCountryInput.style.display = "revert";
-                } else {
-                    otherCountryInput.style.display = "none";
-                }
-            }
-        }
-    </script>
+        </form>
+
+    </main>
+
 </body>
 
 </html>

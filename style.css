@@ -1,91 +1,143 @@
-* {
+:root {
+    --formcolorBlue: #05467E;
+    --backgroundBlue: cadetblue;
+}
+    
+    * {
     margin: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: cursive;
+    color: var(--formcolorBlue);
 }
 
 html,
 body {
-    width: 100%;
-    height: 100%;
-    background-color: pink;
+    min-height: 100vh;
+    background-color: cadetblue;
     margin: 0;
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 1rem;
 }
 
 h1 {
-    font-size: 1.6vw;
-    margin: 1rem;
+    margin: 1rem 0 4rem 0;
 }
 
+h2 {
+    margin-bottom: 2rem;
+    color: black;
+}
+
+h3 {
+    text-align: left;
+    margin: revert;
+    max-width: 44rem;
+}
+
+h4 {
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.9rem;
+    max-width: 50vw;
+    min-height: 0vh;
+    margin: 0;
+}
+
+
 label {
-    font-size: 1.2vw;
+    color: black;
+    font-weight: 600;
+    margin-right: 1rem;
+    min-width: 8rem;
 }
 
 img {
+    margin: 1rem 0;
+    max-width: 50vw;
+    border: 2px solid;
+}
+
+form {
+    padding-top: 3rem;
+}
+
+section {
+    background-color: antiquewhite;
+    border-radius: 3px;
+    padding: inherit;
+    max-width: 60vw;
     margin: auto;
 }
 
-.inputWidth {
-    height: 4vh;
-    min-width: 10rem
+a:hover {
+    color: var(--backgroundBlue);
 }
 
-.flexContainer {
+main {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
-    max-width: 65vw;
     flex-wrap: wrap;
     background-color: white !important;
     text-align: center;
-    padding: 2%;
-    border-radius: 70px;
+    padding: 3rem;
+    border-radius: 10px;
     margin: auto;
-    min-height: 33.5625rem;
     align-content: center;
+    flex-direction: column;
+    max-width: 70vw;
+}
+
+.inputWidth {
+    max-width: 30vw;
+    width: 25rem;
+    margin-right: 5rem;
+}
+
+.inputWidth::placeholder {
+    text-align: start;
 }
 
 .row {
     padding: 0.5rem 0 1rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-}
-
-select,
-::placeholder {
-    font-size: 1.2vw;
 }
 
 #submitButton {
     cursor: pointer;
-    width: 6vw;
     height: auto;
+    margin: 4rem auto;
+    background-color: ghostwhite;
+    border: 2px solid;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    font-size: 1rem;
+}
+
+#submitButton:hover {
+    background-color: aliceblue;
+}
+
+#submitButton:active {
+    box-shadow: none;
+    transform: translateY(4px);
 }
 
 @media screen and (max-width: 640px) {
 
-    h1,
-    label,
-    select,
-    ::placeholder {
-        font-size: 1rem;
-        padding-top: inherit;
-        padding-bottom: inherit;
-    }
-
-    #submitButton {
-        width: 25vw;
-    }
 
 }
 
-[alt="head-slap-jim-carrey-dumb-and-dumber-movie-do0zdbliio42u0et.webp"] {
-    margin-top: 3rem;
-    padding: inherit;
-    max-width: 30vw;
+#f1Website {
+    background-color: white;
+}
+
+#f1Website h2 {
+    color: var(--formcolorBlue);
+}
+
+#yourName, #yourAge {
+    max-width: 10rem;
 }
