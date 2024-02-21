@@ -19,7 +19,10 @@
     <link rel="stylesheet" href="style.css">
 
     <!-- Scriptfiles -->
-    <script src="script.js"></script>
+    <script src="js/script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <!-- <script src="js/pdf.js" defer></script> -->
+
 
 </head>
 
@@ -42,7 +45,7 @@
 
 
 
-        <form action="contactform.php" method="POST">
+        <form action="" method="POST">
 
             <section id="generalSection">
                 <h2>Algemeen</h2>
@@ -64,49 +67,72 @@
 
                 <img src="img/hellomonday.com.png" alt="hellomonday.com.png">
 
-                <h3>Klik op <a href="https://www.hellomonday.com/">deze link</a> en open de website.</h3>
+                <h3>Klik op <a href="https://www.hellomonday.com/" target="_blank">deze link</a> en open de website.
+                </h3>
                 <h3>Scrol rustig door de website heen en noteer hieronder minimaal 2 positieve en 2 negatieve punten die
                     je opvielen aan de site.</h3>
 
-                    <div class="row">
-                        <label for="positive1">Positief punt:</label>
-                        <textarea class="inputWidth" id="positive1" name="Positief punt" placeholder="Positief punt"
-                            rows="4" cols="50" title="Noteer een positief punt" required></textarea>
-                    </div>
+                <div class="row">
+                    <label for="positive1">Positief punt:</label>
+                    <textarea class="inputWidth" id="positive1" name="postive1" placeholder="Positief punt" rows="4"
+                        cols="50" title="Noteer een positief punt" required></textarea>
+                </div>
 
-                    <div class="row">
-                        <label for="positive2">Positief punt:</label>
-                        <textarea class="inputWidth" id="positive2" name="Positief punt" placeholder="Positief punt"
-                            rows="4" cols="50" title="Noteer een positief punt" required></textarea>
-                    </div>
+                <div class="row">
+                    <label for="positive2">Positief punt:</label>
+                    <textarea class="inputWidth" id="positive2" name="postive2" placeholder="Positief punt" rows="4"
+                        cols="50" title="Noteer een positief punt" required></textarea>
+                </div>
 
-                    <div class="row">
-                        <label for="negative1">Negatief punt:</label>
-                        <textarea class="inputWidth" id="negative1" name="Negatief punt" placeholder="Negatief punt"
-                            rows="4" cols="50" title="Noteer een negatief punt" required></textarea>
-                    </div>
+                <div class="row">
+                    <label for="negative1">Negatief punt:</label>
+                    <textarea class="inputWidth" id="negative1" name="negative1" placeholder="Negatief punt" rows="4"
+                        cols="50" title="Noteer een negatief punt" required></textarea>
+                </div>
 
-                    <div class="row">
-                        <label for="negative2">Negatief punt:</label>
-                        <textarea class="inputWidth" id="negative3" name="Negatief punt" placeholder="Negatief punt"
-                            rows="4" cols="50" title="Noteer een negatief punt" required></textarea>
-                    </div>
+                <div class="row">
+                    <label for="negative2">Negatief punt:</label>
+                    <textarea class="inputWidth" id="negative2" name="negative2" placeholder="Negatief punt" rows="4"
+                        cols="50" title="Noteer een negatief punt" required></textarea>
+                </div>
 
-                    <div id="additionalPoints">
-                        <!-- Additional points will be added here -->
-                    </div>
+                <div id="additionalPoints">
+                    <!-- Additional points will be added here -->
+                </div>
 
-                    <button type="button" onclick="addRow('positive')">Voeg positief punt toe</button>
-                    <button type="button" onclick="addRow('negative')">Voeg negatief punt toe</button>
+                <button type="button" onclick="addRow('positive')">Voeg positief punt toe</button>
+                <button type="button" onclick="addRow('negative')">Voeg negatief punt toe</button>
 
             </section>
 
-            <input id="submitButton" type="submit" title="Verstuur enquête" value="Verstuur enquête">
+            <button id="submitButton" onclick="pdfExport()" title="Verstuur enquête">Verstuur enquête</button>
 
         </form>
 
     </main>
 
+    <script>
+
+        function pdfExport() {
+
+            const name = document.getElementById('yourName').value,
+                age = document.getElementById('yourAge').value,
+                positive1 = document.getElementById('positive1').value,
+                positive2 = document.getElementById('positive2').value,
+                negative1 = document.getElementById('negative1').value,
+                negative2 = document.getElementById('negative2').value;
+
+            var doc = new jsPDF();
+
+            doc.text(`Name: ${name}`, 10, 10);
+            doc.text(`Age: ${age}`, 10, 20);
+            doc.text(`Positive Point 1: ${positive1}`, 10, 30);
+            doc.text(`Positive Point 2: ${positive2}`, 10, 40);
+            doc.text(`Negative Point 1: ${negative1}`, 10, 50);
+            doc.text(`Negative Point 2: ${negative2}`, 10, 60);
+        }
+
+    </script>
 </body>
 
 </html>

@@ -39,8 +39,9 @@ h4 {
     font-weight: 500;
     font-size: 0.9rem;
     max-width: 50vw;
+    width: 640px;
     min-height: 0vh;
-    margin: 0;
+    margin: 0 auto;
 }
 
 
